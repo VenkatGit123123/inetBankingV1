@@ -33,7 +33,7 @@ public class Reporting extends TestListenerAdapter
 		String repName="Test-Report-"+timeStamp+".html";
 		
 		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/test-output/"+repName);//specify location of the report
-		htmlReporter.loadXMLConfig(System.getProperty("user.dir")+ "/extent-config.xml");
+		htmlReporter.loadXMLConfig(System.getProperty("user.dir")+ "/Configuration/extent-config.xml");
 		
 		extent=new ExtentReports();
 		

@@ -5,9 +5,18 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 public class ReadConfig {
+	
+	/**
+	 This is a Utility file, this file will read the data from config.properties file and
+	 provide the same data to the BaseClass. 
+	 it is a mediator class between config.properties file and BaseClass
+	 it is almost equal to page object class
+	 */
 
+	//object
 	Properties pro;
 	
+	//constructor
 	public ReadConfig()
 	{
 		File src = new File("./Configuration/config.properties");
@@ -21,6 +30,13 @@ public class ReadConfig {
 		}
 	}
 	
+	/**
+	 Whenever new values are added in config.properties file then 
+	 we need to create the new method like below and call that method into BaseClass 
+	 
+	 */
+	
+	//methods
 	public String getApplicationURL()
 	{
 		String url=pro.getProperty("baseURL");
@@ -39,7 +55,11 @@ public class ReadConfig {
 	return password;
 	}
 	
-	public String getChromePath()
+	
+	/** Commented below browser driver methods because i am not using these methods because i am using WebdriverManager
+	   to call driver objects driver **/
+	
+/**	public String getChromePath()
 	{
 	String chromepath=pro.getProperty("chromepath");
 	return chromepath;
@@ -56,6 +76,8 @@ public class ReadConfig {
 	String firefoxpath=pro.getProperty("firefoxpath");
 	return firefoxpath;
 	}
+	
+	**/
 
 	
 }

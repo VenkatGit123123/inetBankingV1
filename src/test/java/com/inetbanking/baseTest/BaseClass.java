@@ -1,8 +1,9 @@
-package com.inetbanking.testCases;
+package com.inetbanking.baseTest;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,7 +16,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 import com.inetbanking.utilities.XLUtils;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,37 +32,51 @@ import com.inetbanking.utilities.XLUtils;
 
 public class BaseClass {
 
+	//We need to call ReadConfig.java methods by creating object for ReadConfig class and update like below
 	ReadConfig readconfig=new ReadConfig();
 	
 	public String baseURL=readconfig.getApplicationURL();
 	public String username=readconfig.getUsername();
 	public String password=readconfig.getPassword();
-	public static WebDriver driver;
 	
+	public static WebDriver driver;
 	public static Logger logger;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void setup(String br)
-	{			
+	{	
+		//To generate the logs for testcases
 		logger = Logger.getLogger("ebanking");
 		PropertyConfigurator.configure("Log4j.properties");
 		
+		
 		if(br.equals("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver",readconfig.getChromePath());
-			driver=new ChromeDriver();
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			
+		/**	System.setProperty("webdriver.chrome.driver",readconfig.getChromePath());
+			ChromeOptions options = new ChromeOptions();
+			//options.addArguments("--disable-web-security");
+			options.addArguments("test-type");
+			options.addArguments("disable-popup-blocking");
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			driver=new ChromeDriver(options);
+			//ChromeDriver driver = new ChromeDriver(options);  **/
 		}
 		else if(br.equals("firefox"))
 		{
-			System.setProperty("webdriver.gecko.driver",readconfig.getFirefoxPath());
-			driver = new FirefoxDriver();
+			/**System.setProperty("webdriver.gecko.driver",readconfig.getFirefoxPath());
+			driver = new FirefoxDriver(); **/
 		}
 		else if(br.equals("edge"))
 		{
-			System.setProperty("webdriver.edge.driver",readconfig.getIEPath());
-			driver = new EdgeDriver();
+			/**System.setProperty("webdriver.edge.driver",readconfig.getIEPath());
+			driver = new EdgeDriver();**/
 		}
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.get(baseURL);

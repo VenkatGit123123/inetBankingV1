@@ -53,6 +53,14 @@
 <!-- Dependencies required for Project -->
 
   <dependencies>
+	  
+<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.5.3</version>
+</dependency>
+
     
     <dependency>
       <groupId>junit</groupId>
@@ -80,7 +88,7 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.17</version>
-		</dependency>
+	</dependency>
 
 
 		<dependency>
@@ -99,7 +107,7 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.0</version>
-		</dependency>
+	</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>

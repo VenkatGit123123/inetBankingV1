@@ -1,3 +1,6 @@
+
+
+
 package com.inetbanking.testCases;
 
 import java.io.IOException;
@@ -5,6 +8,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.inetbanking.baseTest.BaseClass;
 import com.inetbanking.pageObjects.AddCustomerPage;
 import com.inetbanking.pageObjects.LoginPage;
 
@@ -20,7 +24,7 @@ public class TC_AddCustomerTest_003 extends BaseClass
 		lp.setPassword(password);
 		logger.info("Passsword is provided");
 		lp.clickSubmit();
-		
+		logger.info("clicked login button");
 		Thread.sleep(3000);
 		
 		AddCustomerPage addcust=new AddCustomerPage(driver);

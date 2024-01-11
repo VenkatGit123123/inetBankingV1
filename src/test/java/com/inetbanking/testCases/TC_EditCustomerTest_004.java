@@ -1,5 +1,5 @@
 package com.inetbanking.testCases;
 
-public class EditCustomer {
+public class TC_EditCustomerTest_004 {
 //Edit customer
 }

@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.inetbanking.baseTest.BaseClass;
 import com.inetbanking.pageObjects.LoginPage;
 
 
